@@ -6,7 +6,11 @@ const InputBox = (props) => {
   const [interestPerYearInvestment, setInterestPerYearInvestment] = useState(0);
   const [durationInvestment, setDurationInvestment] = useState(0);
   const buttonClickHandler = () => {
-    console.log("oi");
+    setInitialInvestment(0);
+    setPerYearInvestment(0);
+    setInterestPerYearInvestment(0);
+    setDurationInvestment(0);
+    props.onReset();
   };
 
   const initialInvestmentHandler = (event) => {
@@ -35,10 +39,6 @@ const InputBox = (props) => {
     };
 
     props.onCalculate(tableValues);
-    /*setInitialInvestment(0);
-    setPerYearInvestment(0);
-    setInterestPerYearInvestment(0);
-    setDurationInvestment(0);*/
   };
 
   return (
@@ -72,7 +72,7 @@ const InputBox = (props) => {
             ></input>
           </p>
           <p>
-            <label>Duração do investimento</label>
+            <label>Duração (em anos)</label>
             <input
               type="number"
               value={durationInvestment}
